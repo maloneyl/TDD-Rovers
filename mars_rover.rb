@@ -4,10 +4,11 @@ require_relative "plateau"
 class MarsRover
   attr_reader :location, :heading
 
-  def initialize(location_and_heading) # format given: X Y N
+  def initialize(location_and_heading, plateau) # format given: X Y N
     split_input = location_and_heading.match(/([\d]+\s+[\d]+)\s+([NESW])/) # => #<MatchData "1 2 N" 1:"1 2" 2:"N">
     @location = split_input[1].split(" ").map(&:to_i)
     @heading = split_input[2]
+    @plateau = plateau
   end
 
   def spin_and_move(instructions) # format given: LRRMLM
@@ -47,28 +48,19 @@ class MarsRover
 
   def move
     case @heading
-    when "N" then @location[1] += 1
-    when "E" then @location[0] += 1
-    when "S" then @location[1] -= 1
-    when "W" then @location[0] -= 1
+    when "N" then @location[1] += 1 if @plateau.rover_move_possible?([location[0], location[1]+1])
+    when "E" then @location[0] += 1 if @plateau.rover_move_possible?([location[0]+1, location[1]])
+    when "S" then @location[1] -= 1 if @plateau.rover_move_possible?([location[0], location[1]-1])
+    when "W" then @location[0] -= 1 if @plateau.rover_move_possible?([location[0]-1, location[1]])
     end
   end
-
-  # def move
-  #   case @heading
-  #   when "N" then @location[1] += 1 if location_available?
-  #   when "E" then @location[0] += 1 if location_available?
-  #   when "S" then @location[1] -= 1 if location_available?
-  #   when "W" then @location[0] -= 1 if location_available?
-  #   end
-  # end
-
 end
 
 describe MarsRover do
   before(:each) do
-    @rover1 = MarsRover.new("1 2 N")
-    @rover2 = MarsRover.new("3 3 E")
+    @plateau = Plateau.new("5 5")
+    @rover1 = MarsRover.new("1 2 N", @plateau)
+    @rover2 = MarsRover.new("3 3 E", @plateau)
   end
 
   it "should have a location and heading" do
@@ -108,10 +100,11 @@ describe MarsRover do
     @rover2.heading.should == "E"
   end
 
+  it "should not move if the location to move to is not available" do
+    @rover1.spin_and_move("MMMM")
+    @rover1.location.should_not == [1, 6]
+    @rover1.location.should == [1, 5]
+  end
 
-  # it "should not move if the position to move to is already taken" do
-  #   @rover1.move
-  #   @rover1.location.should_not == [0, 1]
-  # end
 
 end
