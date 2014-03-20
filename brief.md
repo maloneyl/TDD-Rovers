@@ -1,17 +1,6 @@
-Enclosed is the Mars Rover programming problem. We are seeking evidence of clean, simple, tested code with evidence of good design and OOP skills. We would like to see that your code has been developed using TDD and expect a good level of knowledge of the chosen language.
-
-If successful at this stage, the next stage will include a technical interview with two TW developers where you will discuss your code and look to adapt the solution for an extension to the problem. The interview may vary depending on the level of your original submission and on your previous coding knowledge. It may focus on something quite simple such as at introducing a test with Test Driven Development or discussing Object-Orientated Programming or may discuss more complex ideas. We will be assessing how well you interact and pick up new ideas as well as your passion for technology.
+We are seeking evidence of clean, simple, tested code with evidence of good design and OOP skills. We would like to see that your code has been developed using TDD and expect a good level of knowledge of the chosen language.
 
 For the solution, we request that you use either Java, Ruby or C#. You may not use any external libraries to solve this problem, but you may use external libraries or tools for building or testing purposes. Specifically, you may use unit testing libraries or build tools available for your chosen language (e.g., JUnit, Ant, NUnit, Rspec, Rake, etc.) For security reasons, please do not submit your C# code as a .msi file. You may also include a brief explanation of your design and assumptions along with your code.
-
-Please use the URL below to submit your assignment. Please compress your files into a single .zip file before upload. Ensure there are no executables in your submission. Our system blocks executable files for security purposes, and we want to avoid any delays in your process.
-
-When submitting your code, please label it in the following manner:
-
-ExerciseLanguageYourInitials    for example   MarsRoverJavaMS
-https://jobs.thoughtworks.com/DataCompletionRequest?uid=1lOSbCycvAhWlyET&jobId=1544
-
-** Executable File Types are: asp, bat, class, cmd, com, cpl, dll, exe, fon, hta, ini, ins, iw, jar, jsp, js, jse, pif, scr, shs, sh, vb, vbe, vbs, ws, wsc, wsf, wsh
 
 ==========
 
