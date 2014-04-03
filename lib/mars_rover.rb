@@ -57,4 +57,30 @@ class MarsRover
     when "W" then @location[X_COORDINATE] -= 1 if @plateau.rover_move_possible?([location[X_COORDINATE]-1, location[Y_COORDINATE]])
     end
   end
+
+  def output
+    if dead?
+      final_coordinates
+      "#{@location[X_COORDINATE]} #{@location[Y_COORDINATE]} #{@heading} RIP"
+    else
+      "#{@location[X_COORDINATE]} #{@location[Y_COORDINATE]} #{@heading}"
+    end
+  end
+
+  def dead?
+    true if !@plateau.location_within_range?(@location)
+  end
+
+  def final_coordinates
+    if @location[X_COORDINATE] > @plateau.upper_right_coordinates[X_COORDINATE]
+      @location[X_COORDINATE] = @plateau.upper_right_coordinates[X_COORDINATE]
+    elsif @location[X_COORDINATE] < 0
+      @location[X_COORDINATE] = 0
+    elsif @location[Y_COORDINATE] > @plateau.upper_right_coordinates[Y_COORDINATE]
+      @location[Y_COORDINATE] = @plateau.upper_right_coordinates[Y_COORDINATE]
+    elsif @location[Y_COORDINATE] < 0
+      @location[Y_COORDINATE] = 0
+    end
+  end
+
 end

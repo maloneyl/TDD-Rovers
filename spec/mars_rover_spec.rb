@@ -51,5 +51,15 @@ describe MarsRover do
   #   @rover1.location.should == [1, 5]
   # end
 
+  it "should be able to move beyond the plateau's coordinates (i.e. be able to fall off)" do
+    @rover1.spin_and_move("MMMM")
+    expect(@rover1.location).to eql([1, 6])
+  end
+
+  it "should output its final on-plateau location followed by 'RIP' if it has been instructed to move too far and fall off the plateau" do
+    @rover1.spin_and_move("MMMM")
+    expect(@rover1.dead?).to eql(true)
+    expect(@rover1.output).to eql('1 5 N RIP')
+  end
 
 end

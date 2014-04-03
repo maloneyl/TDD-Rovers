@@ -23,8 +23,8 @@ puts "Instructions for Mars Rover 2 (e.g. MMRMMRMRRM):\n"
 rover2_instructions = gets.chomp
 rover2.spin_and_move(rover2_instructions)
 
-puts "Mars Rover 1's new location and heading:\n#{rover1.location[0]} #{rover1.location[1]} #{rover1.heading}"
-puts "Mars Rover 2's new location and heading:\n#{rover2.location[0]} #{rover2.location[1]} #{rover2.heading}"
+puts "Mars Rover 1's new location and heading: #{rover1.output}"
+puts "Mars Rover 2's new location and heading: #{rover2.output}"
 
 
 

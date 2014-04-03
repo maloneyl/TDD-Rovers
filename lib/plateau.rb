@@ -1,6 +1,10 @@
 require_relative 'mars_rover'
 
 class Plateau
+
+  X_COORDINATE = 0
+  Y_COORDINATE = 1
+
   attr_reader :upper_right_coordinates
   attr_accessor :rovers
 
@@ -10,7 +14,8 @@ class Plateau
   end
 
   def rover_move_possible?(coordinates)
-    location_available?(coordinates) && location_within_range?(coordinates)
+    location_available?(coordinates)
+    # && location_within_range?(coordinates)
   end
 
   def location_available?(coordinates)
@@ -22,7 +27,7 @@ class Plateau
   end
 
   def location_within_range?(coordinates)
-    coordinates[1] <= @upper_right_coordinates[1] && coordinates[1] >= 0 &&
-    coordinates[0] >= 0 && coordinates[0] <= @upper_right_coordinates[0]
+    coordinates[Y_COORDINATE] <= @upper_right_coordinates[Y_COORDINATE] && coordinates[Y_COORDINATE] >= 0 &&
+    coordinates[X_COORDINATE] >= 0 && coordinates[X_COORDINATE] <= @upper_right_coordinates[X_COORDINATE]
   end
 end
