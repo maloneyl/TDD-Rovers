@@ -1,7 +1,7 @@
-require "pry"
-require "pry-byebug"
-require_relative "plateau"
-require_relative "mars_rover"
+require 'pry'
+require 'pry-byebug'
+require_relative 'lib/plateau'
+require_relative 'lib/mars_rover'
 
 puts `clear` + "Plateau's upper-right coordinates (e.g. 5 5):\n"
 plateau_upper_right_coordinates = gets.chomp
