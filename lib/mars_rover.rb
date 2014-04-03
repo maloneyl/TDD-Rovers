@@ -1,6 +1,10 @@
 require_relative 'plateau'
 
 class MarsRover
+
+  X_COORDINATE = 0
+  Y_COORDINATE = 1
+
   attr_reader :location, :heading
 
   def initialize(location_and_heading, plateau) # format given: X Y N
@@ -47,10 +51,10 @@ class MarsRover
 
   def move
     case @heading
-    when "N" then @location[1] += 1 if @plateau.rover_move_possible?([location[0], location[1]+1])
-    when "E" then @location[0] += 1 if @plateau.rover_move_possible?([location[0]+1, location[1]])
-    when "S" then @location[1] -= 1 if @plateau.rover_move_possible?([location[0], location[1]-1])
-    when "W" then @location[0] -= 1 if @plateau.rover_move_possible?([location[0]-1, location[1]])
+    when "N" then @location[Y_COORDINATE] += 1 if @plateau.rover_move_possible?([location[X_COORDINATE], location[Y_COORDINATE]+1])
+    when "E" then @location[X_COORDINATE] += 1 if @plateau.rover_move_possible?([location[X_COORDINATE]+1, location[1]])
+    when "S" then @location[Y_COORDINATE] -= 1 if @plateau.rover_move_possible?([location[X_COORDINATE], location[Y_COORDINATE]-1])
+    when "W" then @location[X_COORDINATE] -= 1 if @plateau.rover_move_possible?([location[X_COORDINATE]-1, location[Y_COORDINATE]])
     end
   end
 end

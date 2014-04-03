@@ -41,3 +41,9 @@ MMRMMRMRRM
 Expected Output:
 1 3 N
 5 1 E
+
+---
+
+Extension:
+
+Allow the Mars Rover to move beyond the plateau's coordinates (i.e. let it fall off and die), but it should (a) leave a beacon behind as a warning to the other rover, and (b) have its final location followed by "RIP" as its output.
