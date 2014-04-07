@@ -5,7 +5,7 @@ class MarsRover
   X_COORDINATE = 0
   Y_COORDINATE = 1
 
-  attr_reader :location, :heading
+  attr_reader :location, :heading, :plateau
 
   def initialize(location_and_heading, plateau) # format given: X Y N
     split_input = location_and_heading.match(/([\d]+\s+[\d]+)\s+([NESW])/) # => #<MatchData "1 2 N" 1:"1 2" 2:"N">
@@ -59,16 +59,20 @@ class MarsRover
   end
 
   def output
+    main = "#{@location[X_COORDINATE]} #{@location[Y_COORDINATE]} #{@heading}"
     if dead?
-      final_coordinates
-      "#{@location[X_COORDINATE]} #{@location[Y_COORDINATE]} #{@heading} RIP"
+       "#{main} RIP"
     else
-      "#{@location[X_COORDINATE]} #{@location[Y_COORDINATE]} #{@heading}"
+      "#{main}"
     end
   end
 
   def dead?
     true if !@plateau.location_within_range?(@location)
+    if true
+      final_coordinates
+      true
+    end
   end
 
   def final_coordinates
@@ -81,6 +85,7 @@ class MarsRover
     elsif @location[Y_COORDINATE] < 0
       @location[Y_COORDINATE] = 0
     end
+    @plateau.add_beacon(@location)
   end
 
 end

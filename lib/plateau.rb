@@ -6,11 +6,12 @@ class Plateau
   Y_COORDINATE = 1
 
   attr_reader :upper_right_coordinates
-  attr_accessor :rovers
+  attr_accessor :rovers, :beacons
 
   def initialize(upper_right_coordinates) # user input will be a string
     @upper_right_coordinates = upper_right_coordinates.split(" ").map(&:to_i)
     @rovers = []
+    @beacons = []
   end
 
   def rover_move_possible?(coordinates)
@@ -29,5 +30,9 @@ class Plateau
   def location_within_range?(coordinates)
     coordinates[Y_COORDINATE] <= @upper_right_coordinates[Y_COORDINATE] && coordinates[Y_COORDINATE] >= 0 &&
     coordinates[X_COORDINATE] >= 0 && coordinates[X_COORDINATE] <= @upper_right_coordinates[X_COORDINATE]
+  end
+
+  def add_beacon(coordinates)
+    @beacons << coordinates
   end
 end
