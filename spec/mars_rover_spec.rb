@@ -57,4 +57,13 @@ describe MarsRover do
     expect(@rover1.plateau.beacons).to include([1, 5])
   end
 
+  it "should not be able to move into a location that has a beacon" do
+    @rover1.spin_and_move("MMMM")
+    expect(@rover1.dead?).to eql(true)
+    expect(@rover1.output).to eql("1 5 N RIP")
+    expect(@rover1.plateau.beacons).to include([1, 5])
+    @rover2.spin_and_move("LMMLMM")
+    expect(@rover2.location).not_to eql([1, 5])
+    expect(@rover2.location).to eql([2, 5])
+  end
 end

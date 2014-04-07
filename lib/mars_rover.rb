@@ -51,10 +51,10 @@ class MarsRover
 
   def move
     case @heading
-    when "N" then @location[Y_COORDINATE] += 1 if @plateau.rover_move_possible?([location[X_COORDINATE], location[Y_COORDINATE]+1])
-    when "E" then @location[X_COORDINATE] += 1 if @plateau.rover_move_possible?([location[X_COORDINATE]+1, location[1]])
-    when "S" then @location[Y_COORDINATE] -= 1 if @plateau.rover_move_possible?([location[X_COORDINATE], location[Y_COORDINATE]-1])
-    when "W" then @location[X_COORDINATE] -= 1 if @plateau.rover_move_possible?([location[X_COORDINATE]-1, location[Y_COORDINATE]])
+    when "N" then @location[Y_COORDINATE] += 1 if @plateau.location_available?([location[X_COORDINATE], location[Y_COORDINATE]+1])
+    when "E" then @location[X_COORDINATE] += 1 if @plateau.location_available?([location[X_COORDINATE]+1, location[1]])
+    when "S" then @location[Y_COORDINATE] -= 1 if @plateau.location_available?([location[X_COORDINATE], location[Y_COORDINATE]-1])
+    when "W" then @location[X_COORDINATE] -= 1 if @plateau.location_available?([location[X_COORDINATE]-1, location[Y_COORDINATE]])
     end
   end
 

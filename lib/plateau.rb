@@ -14,16 +14,17 @@ class Plateau
     @beacons = []
   end
 
-  def rover_move_possible?(coordinates)
-    location_available?(coordinates)
-    # && location_within_range?(coordinates)
-  end
+  # def rover_move_possible?(coordinates)
+  #   location_available?(coordinates)
+  #   # && location_within_range?(coordinates)
+  # end
 
   def location_available?(coordinates)
     beep = 0
     @rovers.each do |rover|
       beep += 1 if rover.location == coordinates
     end
+    beep += 1 if beacons.include?(coordinates)
     beep > 0 ? false : true
   end
 
